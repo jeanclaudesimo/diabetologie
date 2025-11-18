@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetologie Derschlag - Bald verfügbar</title>
+    <meta name="description" content="Unsere neue Website ist bald verfügbar. Diabetologische Schwerpunktpraxis Dr. Jürgen Grunwald in Gummersbach-Derschlag.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #7AB51D 0%, #5a8916 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #7AB51D 0%, #5a8916 100%);
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 15s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+        }
+
+        .logo {
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo svg {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 10px;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 1.2rem;
+            font-weight: 300;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content {
+            padding: 50px 40px;
+            text-align: center;
+        }
+
+        .coming-soon {
+            font-size: 2rem;
+            color: #7AB51D;
+            margin-bottom: 20px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .spinner {
+            width: 30px;
+            height: 30px;
+            border: 3px solid #e0e0e0;
+            border-top-color: #7AB51D;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .message {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .info-card {
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 4px solid #7AB51D;
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(122, 181, 29, 0.15);
+        }
+
+        .info-card h3 {
+            color: #7AB51D;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-card p {
+            color: #555;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .contact-info {
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .contact-info h3 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #555;
+            font-size: 1rem;
+        }
+
+        .contact-item svg {
+            color: #7AB51D;
+        }
+
+        .contact-item a {
+            color: #7AB51D;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: #5a8916;
+            text-decoration: underline;
+        }
+
+        .footer {
+            background: #f8f9fa;
+            padding: 20px 40px;
+            text-align: center;
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: #7AB51D;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .coming-soon {
+                font-size: 1.5rem;
+            }
+
+            .content {
+                padding: 30px 25px;
+            }
+
+            .header {
+                padding: 40px 25px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="60" cy="60" r="58" fill="white" opacity="0.1"/>
+                    <circle cx="35" cy="30" r="12" fill="white"/>
+                    <circle cx="80" cy="45" r="12" fill="white"/>
+                    <circle cx="42" cy="80" r="12" fill="white"/>
+                    <path d="M 35 42 Q 50 40 68 45" stroke="white" stroke-width="8" fill="none" stroke-linecap="round"/>
+                    <path d="M 42 68 Q 30 54 35 42" stroke="white" stroke-width="8" fill="none" stroke-linecap="round"/>
+                    <path d="M 54 75 Q 65 58 68 47" stroke="white" stroke-width="8" fill="none" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <h1>Diabetologie Derschlag</h1>
+            <p class="subtitle">Ihre Spezialisten für Diabetes</p>
+        </div>
+
+        <div class="content">
+            <div class="coming-soon">
+                <div class="spinner"></div>
+                <span>Bald verfügbar</span>
+            </div>
+
+            <p class="message">
+                Wir arbeiten gerade an unserer neuen Website, um Ihnen ein noch besseres
+                Online-Erlebnis zu bieten. In Kürze finden Sie hier umfassende Informationen
+                zu unseren Leistungen und unserem Team.
+            </p>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                        Unsere Praxis
+                    </h3>
+                    <p>
+                        DDG-zertifizierte Diabetologische Schwerpunktpraxis mit modernster Diagnostik
+                        und individueller Therapie seit 2018.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h3>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                        Sprechzeiten
+                    </h3>
+                    <p>
+                        Mo, Di, Do: 08:00 - 18:00 Uhr<br>
+                        Mi: 08:00 - 12:00 Uhr<br>
+                        Fr: 08:00 - 14:00 Uhr
+                    </p>
+                </div>
+            </div>
+
+            <div class="contact-info">
+                <h3>Sie erreichen uns unter:</h3>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        <span>Moltkestraße 10, 51647 Gummersbach-Derschlag</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                        <a href="tel:+4922611234">+49 2261 12345</a>
+                    </div>
+                    <div class="contact-item">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                        <a href="mailto:info@diabetologie-derschlag.de">info@diabetologie-derschlag.de</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2025 Diabetologie Derschlag. Alle Rechte vorbehalten.</p>
+            <p style="margin-top: 5px; font-size: 0.85rem;">
+                Website erstellt von <a href="https://www.digitalssolutions.de/de" target="_blank" rel="noopener">Digitalssolutions</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

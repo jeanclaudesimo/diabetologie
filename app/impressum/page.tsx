@@ -196,6 +196,24 @@ export default function ImpressumPage() {
             </div>
           </section>
 
+          {/* Web Design and Development */}
+          <section>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Webdesign und technische Umsetzung</h2>
+            <div className="space-y-2 text-gray-700">
+              <p>
+                Diese Website wurde konzipiert, gestaltet und technisch umgesetzt von:
+              </p>
+              <div className="bg-gray-50 p-4 rounded-lg mt-4">
+                <p className="font-semibold text-lg">Digitalssolutions</p>
+                <p className="mt-2">
+                  <a href="https://www.digitalssolutions.de/de" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">
+                    www.digitalssolutions.de
+                  </a>
+                </p>
+              </div>
+            </div>
+          </section>
+
           {/* Back Link */}
           <div className="pt-8 border-t border-gray-200">
             <Link
