@@ -1,50 +1,51 @@
-# -----------------------------
-# Stage 1: Builder
-# -----------------------------
-FROM node:20-alpine AS builder
+# Utilisation de l'image officielle Node.js LTS
+FROM node:20-alpine AS base
 
+# Installer les dépendances uniquement quand nécessaire
+FROM base AS deps
+RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-# Installer toutes les dépendances
-COPY package*.json ./
+# Copier les fichiers de dépendances
+COPY package.json package-lock.json* ./
 RUN npm ci
 
-# Copier le code source
+# Reconstruire le code source uniquement quand nécessaire
+FROM base AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-# Build Nuxt/Nitro pour production
+# Variables d'environnement pour le build
+ENV NEXT_TELEMETRY_DISABLED=1
+
+# Build de l'application
 RUN npm run build
 
-# -----------------------------
-# Stage 2: Production
-# -----------------------------
-FROM node:20-alpine AS production
-
+# Image de production, copier uniquement les fichiers nécessaires
+FROM base AS runner
 WORKDIR /app
 
-# Installer uniquement les dépendances de production
-COPY package*.json ./
-RUN npm ci --only=production && npm cache clean --force
-
-# Copier le build depuis le builder
-COPY --from=builder /app/.output /app/.output
-
-# Copier le script de démarrage du serveur
-COPY server-start.mjs /app/server-start.mjs
-
-# Copier le script d'entrée
-COPY docker-entrypoint.sh /app/docker-entrypoint.sh
-RUN chmod +x /app/docker-entrypoint.sh
-
-# Set NODE_ENV, PORT and HOST
 ENV NODE_ENV=production
-ENV PORT=3007
-ENV HOST=0.0.0.0
-ENV NITRO_PORT=3007
-ENV NITRO_HOST=0.0.0.0
+ENV NEXT_TELEMETRY_DISABLED=1
 
-# Expose le port interne du conteneur
+# Créer un utilisateur non-root
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
+
+# Copier les fichiers publics
+COPY --from=builder /app/public ./public
+
+# Copier les fichiers de build
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+USER nextjs
+
 EXPOSE 3007
 
-# Démarrage du serveur via le script d'entrée
-ENTRYPOINT ["/app/docker-entrypoint.sh"]
+ENV PORT=3005
+ENV HOSTNAME="0.0.0.0"
+
+# Démarrer l'application
+CMD ["node", "server.js"]

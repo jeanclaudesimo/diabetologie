@@ -5,18 +5,10 @@ services:
       dockerfile: Dockerfile
     container_name: diabetologie
     ports:
-      - "3007:3007"   # le conteneur écoute maintenant sur 3007
+      - "3007:3007"
     environment:
       - NODE_ENV=production
-      - PORT=3007
-      - HOST=0.0.0.0
-      - NITRO_PORT=3007
-      - NITRO_HOST=0.0.0.0
       - NEXT_TELEMETRY_DISABLED=1
-      - NUXT_PUBLIC_API_BASE=https://portal.digitalssolutions.de/api
-      - API_LOGIN_EMAIL=${API_LOGIN_EMAIL}
-      - API_LOGIN_PASSWORD=${API_LOGIN_PASSWORD}
-      - API_TENANT_KEY=${API_TENANT_KEY}
       - GOOGLE_PLACES_API_KEY=${GOOGLE_PLACES_API_KEY}
       - NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=${NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}
       - NEXT_PUBLIC_GOOGLE_PLACE_ID=${NEXT_PUBLIC_GOOGLE_PLACE_ID}
@@ -26,6 +18,8 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=traefik-net"
+
+      - "traefik.http.services.diabetologie.loadbalancer.server.port=3005"
       
       # HTTP (Port 80) → Redirect auf HTTPS
       - "traefik.http.routers.diabetologie-http.entrypoints=frontendsecure"
@@ -35,19 +29,20 @@ services:
       - "traefik.http.middlewares.diabetologie-https.redirectscheme.scheme=https"
       
       # Redirect diabetologie.de → www.diabetologie.de
-#      - "traefik.http.routers.diabetologie-root.entrypoints=frontendsecure"
-#      - "traefik.http.routers.diabetologie-root.rule=Host(`diabetologie.de`)"
-#      - "traefik.http.routers.diabetologie-root.middlewares=diabetologie-www-redirect"
-#      - "traefik.http.routers.diabetologie-root.tls=true"
+      - "traefik.http.routers.diabetologie-root.entrypoints=frontendsecure"
+      - "traefik.http.routers.diabetologie-root.rule=Host(`diabetologie-derschlag.de`)"
+      - "traefik.http.routers.diabetologie-root.middlewares=diabetologie-www-redirect"
+      - "traefik.http.routers.diabetologie-root.tls=true"
 
-#      - "traefik.http.middlewares.diabetologie-www-redirect.redirectregex.regex=^https?://diabetologie-derschlag\\.de(.*)"
-#      - "traefik.http.middlewares.diabetologie-www-redirect.redirectregex.replacement=https://www.diabetologie-derschlag.de$1"
-#      - "traefik.http.middlewares.diabetologie-www-redirect.redirectregex.permanent=true"
+      - "traefik.http.middlewares.diabetologie-www-redirect.redirectregex.regex=^https?://diabetologie\\.de(.*)"
+      - "traefik.http.middlewares.diabetologie-www-redirect.redirectregex.replacement=https://diabetologie-derschlag.de$1"
+      - "traefik.http.middlewares.diabetologie-www-redirect.redirectregex.permanent=true"
       
       # HTTPS Router
-#      - "traefik.http.routers.diabetologie.entrypoints=frontendsecure"
-#      - "traefik.http.routers.diabetologie.rule=Host(`www.diabetologie-derschlag.de`)"
-#      - "traefik.http.routers.diabetologie.tls=true"
+      - "traefik.http.routers.diabetologie.entrypoints=frontendsecure"
+      - "traefik.http.routers.diabetologie.rule=Host(`diabetologie-derschlag.de`)"
+      - "traefik.http.routers.diabetologie.tls=true"
+      - "traefik.http.routers.diabetologie.service=diabetologie"
 
 networks:
   traefik-net:
