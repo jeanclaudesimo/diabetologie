@@ -17,6 +17,7 @@ services:
       - "traefik.http.routers.diabetologie-coming-soon.entrypoints=frontendsecure"
       - "traefik.http.routers.diabetologie-coming-soon.rule=Host(`diabetologie-derschlag.de`)"
       - "traefik.http.routers.diabetologie-coming-soon.tls=true"
+      - "traefik.http.routers.diabetologie-coming-soon.tls.certresolver=leresolver"
       - "traefik.http.routers.diabetologie-coming-soon.priority=1"
 
   # Hauptseite (mit Basic Auth geschützt)
@@ -40,7 +41,6 @@ services:
       - "traefik.enable=true"
       - "traefik.docker.network=traefik-net"
       - "traefik.http.services.diabetologie.loadbalancer.server.port=3005"
-      - "traefik.http.routers.diabetologie-secure.tls.certresolver=leresolver"
 
       # Basic Auth Middleware (Beispiel: admin/preview123)
       # Um ein neues Passwort zu generieren: docker run --rm httpd:alpine htpasswd -nbB username password
@@ -50,6 +50,7 @@ services:
       - "traefik.http.routers.diabetologie.entrypoints=frontendsecure"
       - "traefik.http.routers.diabetologie.rule=Host(`preview.digitalssolutions.de`)"
       - "traefik.http.routers.diabetologie.tls=true"
+      - "traefik.http.routers.diabetologie.tls.certresolver=leresolver"
       - "traefik.http.routers.diabetologie.middlewares=diabetologie-auth"
       - "traefik.http.routers.diabetologie.service=diabetologie"
       - "traefik.http.routers.diabetologie.priority=10"
