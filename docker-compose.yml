@@ -40,6 +40,7 @@ services:
       - "traefik.enable=true"
       - "traefik.docker.network=traefik-net"
       - "traefik.http.services.diabetologie.loadbalancer.server.port=3005"
+      - "traefik.http.routers.diabetologie-secure.tls.certresolver=leresolver"
 
       # Basic Auth Middleware (Beispiel: admin/preview123)
       # Um ein neues Passwort zu generieren: docker run --rm httpd:alpine htpasswd -nbB username password
