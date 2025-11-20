@@ -1,9 +1,8 @@
 FROM nginx:alpine
 
-# Copier la page Landing Page, Logo et Favicons
+# Copier la page Landing Page, Logo et Favicon
 COPY index.html /usr/share/nginx/html/index.html
 COPY logo.jpg /usr/share/nginx/html/logo.jpg
-COPY favicon.ico /usr/share/nginx/html/favicon.ico
 COPY favicon.svg /usr/share/nginx/html/favicon.svg
 
 # Configuration Nginx simple
