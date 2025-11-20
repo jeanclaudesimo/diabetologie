@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diabetologie Derschlag - Bald verfügbar</title>
-    <meta name="description" content="Unsere neue Website ist bald verfügbar. Diabetologische Schwerpunktpraxis Dr. Jürgen Grunwald in Gummersbach-Derschlag.">
+    <title>Diabetologie Derschlag - Ihre Spezialisten für Diabetes</title>
+    <meta name="description" content="Diabetologische Schwerpunktpraxis Dr. Jürgen Grunwald in Gummersbach. Hauptpraxis und Schulungszentrum für umfassende Diabetesbetreuung.">
     <style>
         * {
             margin: 0;
@@ -14,23 +14,27 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #7AB51D 0%, #5a8916 100%);
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8ecef 100%);
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
             color: #333;
+            line-height: 1.6;
         }
 
         .container {
-            max-width: 800px;
-            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header Section */
+        .header {
             background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
-            animation: fadeIn 0.6s ease-out;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            padding: 50px 40px;
+            margin-bottom: 40px;
+            text-align: center;
+            animation: fadeIn 0.8s ease-out;
         }
 
         @keyframes fadeIn {
@@ -44,314 +48,338 @@
             }
         }
 
-        .header {
-            background: linear-gradient(135deg, #7AB51D 0%, #5a8916 100%);
-            padding: 60px 40px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: pulse 15s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-                opacity: 0.5;
-            }
-            50% {
-                transform: scale(1.1);
-                opacity: 0.8;
-            }
+        .logo-container {
+            margin-bottom: 30px;
         }
 
         .logo {
-            position: relative;
-            z-index: 1;
+            max-width: 150px;
+            height: auto;
+            margin: 0 auto;
+            display: block;
         }
 
-        .logo svg {
-            width: 120px;
-            height: 120px;
-            margin-bottom: 20px;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            color: white;
-            margin-bottom: 10px;
+        .practice-name {
+            font-size: 2.8rem;
             font-weight: 700;
-            position: relative;
-            z-index: 1;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
         }
 
-        .subtitle {
-            color: rgba(255, 255, 255, 0.95);
-            font-size: 1.2rem;
-            font-weight: 300;
-            position: relative;
-            z-index: 1;
+        .practice-name .line1 {
+            color: #2c3e50;
         }
 
-        .content {
-            padding: 50px 40px;
-            text-align: center;
-        }
-
-        .coming-soon {
-            font-size: 2rem;
+        .practice-name .line2 {
             color: #7AB51D;
-            margin-bottom: 20px;
+            display: block;
+            margin-top: 5px;
+        }
+
+        .doctor-info {
+            margin-top: 20px;
+            color: #555;
+            font-size: 1rem;
+        }
+
+        .doctor-name {
             font-weight: 600;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        .spinner {
-            width: 30px;
-            height: 30px;
-            border: 3px solid #e0e0e0;
-            border-top-color: #7AB51D;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        .message {
+            color: #2c3e50;
             font-size: 1.1rem;
-            color: #666;
-            line-height: 1.8;
+            margin-top: 5px;
+        }
+
+        .specialties {
+            color: #7AB51D;
+            font-size: 0.95rem;
+            margin-top: 5px;
+        }
+
+        /* Locations Section */
+        .locations-section {
             margin-bottom: 40px;
         }
 
-        .info-grid {
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #7AB51D 0%, #5a8916 100%);
+            border-radius: 2px;
+        }
+
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .location-card {
+            background: white;
+            border-radius: 16px;
+            padding: 35px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid #7AB51D;
+        }
+
+        .location-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(122, 181, 29, 0.2);
+        }
+
+        .location-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .location-icon {
+            width: 24px;
+            height: 24px;
+            color: #7AB51D;
+        }
+
+        .location-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .location-address {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .location-address strong {
+            color: #2c3e50;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: white;
+            border-radius: 16px;
+            padding: 50px 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .contact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
             margin-top: 40px;
         }
 
-        .info-card {
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
             padding: 25px;
             background: #f8f9fa;
             border-radius: 12px;
-            border-left: 4px solid #7AB51D;
-            text-align: left;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: background 0.3s ease;
         }
 
-        .info-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(122, 181, 29, 0.15);
+        .contact-item:hover {
+            background: #e9ecef;
         }
 
-        .info-card h3 {
+        .contact-icon {
+            width: 32px;
+            height: 32px;
             color: #7AB51D;
-            margin-bottom: 10px;
+        }
+
+        .contact-label {
+            font-size: 0.9rem;
+            color: #777;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .contact-value {
             font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            color: #2c3e50;
+            font-weight: 500;
         }
 
-        .info-card p {
-            color: #555;
-            line-height: 1.6;
-            font-size: 0.95rem;
-        }
-
-        .contact-info {
-            margin-top: 40px;
-            padding-top: 40px;
-            border-top: 2px solid #e0e0e0;
-        }
-
-        .contact-info h3 {
-            color: #333;
-            margin-bottom: 20px;
-            font-size: 1.3rem;
-        }
-
-        .contact-details {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            align-items: center;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #555;
-            font-size: 1rem;
-        }
-
-        .contact-item svg {
-            color: #7AB51D;
-        }
-
-        .contact-item a {
+        .contact-value a {
             color: #7AB51D;
             text-decoration: none;
-            font-weight: 500;
             transition: color 0.3s ease;
         }
 
-        .contact-item a:hover {
+        .contact-value a:hover {
             color: #5a8916;
             text-decoration: underline;
         }
 
+        /* Footer */
         .footer {
-            background: #f8f9fa;
-            padding: 20px 40px;
+            margin-top: 50px;
             text-align: center;
             color: #777;
             font-size: 0.9rem;
+            padding: 30px 20px;
         }
 
-        .footer a {
-            color: #7AB51D;
-            text-decoration: none;
+        .footer p {
+            margin-bottom: 5px;
         }
 
-        .footer a:hover {
-            text-decoration: underline;
-        }
-
+        /* Responsive Design */
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-
-            .coming-soon {
-                font-size: 1.5rem;
-            }
-
-            .content {
-                padding: 30px 25px;
+            .container {
+                padding: 20px 15px;
             }
 
             .header {
-                padding: 40px 25px;
+                padding: 30px 25px;
             }
 
-            .info-grid {
+            .practice-name {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .locations-grid {
                 grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .location-card {
+                padding: 25px;
+            }
+
+            .contact-section {
+                padding: 35px 25px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .practice-name {
+                font-size: 1.6rem;
+            }
+
+            .logo {
+                max-width: 120px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- Header with Logo and Practice Name -->
         <div class="header">
-            <div class="logo">
-                <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="60" cy="60" r="58" fill="white" opacity="0.1"/>
-                    <circle cx="35" cy="30" r="12" fill="white"/>
-                    <circle cx="80" cy="45" r="12" fill="white"/>
-                    <circle cx="42" cy="80" r="12" fill="white"/>
-                    <path d="M 35 42 Q 50 40 68 45" stroke="white" stroke-width="8" fill="none" stroke-linecap="round"/>
-                    <path d="M 42 68 Q 30 54 35 42" stroke="white" stroke-width="8" fill="none" stroke-linecap="round"/>
-                    <path d="M 54 75 Q 65 58 68 47" stroke="white" stroke-width="8" fill="none" stroke-linecap="round"/>
-                </svg>
+            <div class="logo-container">
+                <img src="logo.jpg" alt="Diabetologie Derschlag Logo" class="logo">
             </div>
-            <h1>Diabetologie Derschlag</h1>
-            <p class="subtitle">Ihre Spezialisten für Diabetes</p>
+            <h1 class="practice-name">
+                <span class="line1">diabetologie</span>
+                <span class="line2">derschlag</span>
+            </h1>
+            <div class="doctor-info">
+                <div>Dr. med. - Dipl. oec. med.</div>
+                <div class="doctor-name">Jürgen Grunwald</div>
+                <div class="specialties">Diabetologie und Notfallmedizin</div>
+            </div>
         </div>
 
-        <div class="content">
-            <div class="coming-soon">
-                <div class="spinner"></div>
-                <span>Bald verfügbar</span>
-            </div>
-
-            <p class="message">
-                Wir arbeiten gerade an unserer neuen Website, um Ihnen ein noch besseres
-                Online-Erlebnis zu bieten. In Kürze finden Sie hier umfassende Informationen
-                zu unseren Leistungen und unserem Team.
-            </p>
-
-            <div class="info-grid">
-                <div class="info-card">
-                    <h3>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                            <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
-                        </svg>
-                        Unsere Praxis
-                    </h3>
-                    <p>
-                        DDG-zertifizierte Diabetologische Schwerpunktpraxis mit modernster Diagnostik
-                        und individueller Therapie seit 2018.
-                    </p>
-                </div>
-
-                <div class="info-card">
-                    <h3>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"/>
-                            <polyline points="12 6 12 12 16 14"/>
-                        </svg>
-                        Sprechzeiten
-                    </h3>
-                    <p>
-                        Mo, Di, Do: 08:00 - 18:00 Uhr<br>
-                        Mi: 08:00 - 12:00 Uhr<br>
-                        Fr: 08:00 - 14:00 Uhr
-                    </p>
-                </div>
-            </div>
-
-            <div class="contact-info">
-                <h3>Sie erreichen uns unter:</h3>
-                <div class="contact-details">
-                    <div class="contact-item">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <!-- Locations Section -->
+        <div class="locations-section">
+            <h2 class="section-title">Unsere Standorte</h2>
+            <div class="locations-grid">
+                <div class="location-card">
+                    <div class="location-header">
+                        <svg class="location-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
                             <circle cx="12" cy="10" r="3"/>
                         </svg>
-                        <span>Moltkestraße 10, 51647 Gummersbach-Derschlag</span>
+                        <h3 class="location-title">Hauptpraxis</h3>
                     </div>
-                    <div class="contact-item">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                        </svg>
-                        <a href="tel:+4922611234">+49 2261 12345</a>
+                    <div class="location-address">
+                        <strong>An der Mühlwiese 11</strong>
+                        51645 Gummersbach
                     </div>
-                    <div class="contact-item">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                            <polyline points="22,6 12,13 2,6"/>
+                </div>
+
+                <div class="location-card">
+                    <div class="location-header">
+                        <svg class="location-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
                         </svg>
+                        <h3 class="location-title">Schulungszentrum</h3>
+                    </div>
+                    <div class="location-address">
+                        <strong>Kölner Straße 2</strong>
+                        51645 Gummersbach
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="contact-section">
+            <h2 class="section-title">Kontakt</h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                    <div class="contact-label">Telefon</div>
+                    <div class="contact-value">
+                        <a href="tel:+4922619152222">0 22 61-915 22 22</a>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                    <div class="contact-label">E-Mail</div>
+                    <div class="contact-value">
                         <a href="mailto:info@diabetologie-derschlag.de">info@diabetologie-derschlag.de</a>
                     </div>
                 </div>
             </div>
         </div>
 
+        <!-- Footer -->
         <div class="footer">
             <p>&copy; 2025 Diabetologie Derschlag. Alle Rechte vorbehalten.</p>
-            <p style="margin-top: 5px; font-size: 0.85rem;">
-                Website erstellt von <a href="https://www.digitalssolutions.de/de" target="_blank" rel="noopener">Digitalssolutions</a>
-            </p>
         </div>
     </div>
 </body>

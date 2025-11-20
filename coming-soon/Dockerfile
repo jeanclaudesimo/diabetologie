@@ -1,7 +1,8 @@
 FROM nginx:alpine
 
-# Copier la page Coming Soon
+# Copier la page Landing Page et Logo
 COPY index.html /usr/share/nginx/html/index.html
+COPY logo.jpg /usr/share/nginx/html/logo.jpg
 
 # Configuration Nginx simple
 RUN echo 'server { \
