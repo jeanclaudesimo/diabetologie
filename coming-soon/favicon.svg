@@ -1,0 +1,18 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Grünes molekulares Symbol passend zum Logo -->
+  <rect width="32" height="32" fill="white"/>
+
+  <!-- Oberer Kreis -->
+  <circle cx="10" cy="8" r="3.5" fill="#7AB51D"/>
+
+  <!-- Rechter Kreis -->
+  <circle cx="22" cy="12" r="3.5" fill="#7AB51D"/>
+
+  <!-- Unterer Kreis -->
+  <circle cx="12" cy="22" r="3.5" fill="#7AB51D"/>
+
+  <!-- Verbindungslinien (geschwungen) -->
+  <path d="M 10 11 Q 14 10 19 12" stroke="#7AB51D" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M 12 19 Q 8 15 10 11" stroke="#7AB51D" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M 15 20 Q 18 16 19 13" stroke="#7AB51D" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+</svg>
